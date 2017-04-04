@@ -27,7 +27,7 @@ function createAccount($username,$password,$betakey){
 	$up_password = strtoupper($password);
 	$isBetaKeyused = checkbetakey($up_betakey);
 	
-	echo $up_betakey;
+	
 	
 	if($up_betakey == ""){
 		echo "Without BetaKey no Accountcreation!";
