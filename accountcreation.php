@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$db_username = "exitare";
-$db_password = "raphaelk1";
+$db_username = "";
+$db_password = "";
 $db_name = "wotlkauth";
 
 
