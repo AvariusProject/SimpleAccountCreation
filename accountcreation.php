@@ -22,6 +22,7 @@ else {
 
 function createAccount($username,$password,$betakey){
 	
+
 	$up_username = strtoupper($username);
 	$up_password = strtoupper($password);
 	$isBetaKeyused = checkbetakey($betakey);
@@ -80,6 +81,7 @@ function createAccount($username,$password,$betakey){
 }
 
 function betaKeyUsed($betakey){
+
 	
 	
 	
@@ -104,8 +106,7 @@ function betaKeyUsed($betakey){
 }
 
 function checkifAccountexist($username){
-	
-	
+
 	
 	$conn = new mysqli($GLOBALS["servername"], $GLOBALS['db_username'], $GLOBALS['db_password'], $GLOBALS['db_name']);
 	// Check connection
@@ -134,7 +135,7 @@ function checkifAccountexist($username){
 }
 
 function checkbetakey($betakey){
-	
+
 	
 	$server = $GLOBALS['servername'];
 	$dbuser = $GLOBALS['db_username'];
