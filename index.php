@@ -2,6 +2,7 @@
 
 include_once("./accountcreation.php");
 
+
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -15,18 +16,22 @@ include_once("./accountcreation.php");
 </style>
 </head>
 <body>
+
 <h1>Welcome at the Homepage of  Purity Gaming!</h1>
 <p>Our Homepage is under Construction.</p>
  <form action="../index.php" method="post">
   Accountname:<br>
-  <input type="text" name="username" value="Test"><br>
+  <input type="text" name="username" ><br>
   Accountpassword:<br>
-  <input type="password" name="password" value="test"><br>
+  <input type="password" name="password" ><br>
   BetaKey: <br>
   <input type="text" name="betakey"><br>
-<button type="submit">Create Account!</button>
+  </p>
+  <button type="submit">Create Account!</button>
+  
 </form>
 
 <p><em>Thank you for your interest on  playing at our Server.</em></p>
+<p><em>Realmlist: purity-gaming.com</em></p>
 </body>
 </html>

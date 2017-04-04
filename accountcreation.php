@@ -1,5 +1,17 @@
 <?php
 
+$serverconfigs = parse_ini_file("config.ini",false);
+$servername = $serverconfigs['servername'];
+$db_username = $serverconfigs['username'];
+$db_password = $serverconfigs['password'];
+$db_name = $serverconfigs['databasename'];
+
+global $servername;
+global $db_username;
+global $db_password;
+global $db_name;
+
+
 if (array_key_exists("username", $_POST) && array_key_exists("password", $_POST) && array_key_exists("betakey",$_POST)) {
 	createAccount($_POST["username"], ($_POST["password"]),$_POST["betakey"]);
 }
@@ -10,14 +22,10 @@ else {
 
 function createAccount($username,$password,$betakey){
 	
-	$servername = "127.0.0.1";
-	$db_username = "Exitare";
-	$db_password = "raphaelk1";
-	$db_name = "wotlkauth";
-	
 	$up_username = strtoupper($username);
 	$up_password = strtoupper($password);
 	$isBetaKeyused = checkbetakey($betakey);
+	
 	
 	if($betakey == ""){
 		echo "Without BetaKey no Accountcreation!";
@@ -41,7 +49,7 @@ function createAccount($username,$password,$betakey){
 	}
 	
 	// Create connection
-	$conn = new mysqli($servername, $db_username, $db_password, $db_name);
+	$conn = new mysqli($GLOBALS["servername"], $GLOBALS['db_username'], $GLOBALS['db_password'], $GLOBALS['db_name']);
 	// Check connection
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
@@ -67,16 +75,15 @@ function createAccount($username,$password,$betakey){
 
 	$stmt->close();
 	$conn->close();
+	echo "Accountcreation successfull!";
 	return;
 }
 
 function betaKeyUsed($betakey){
-	$servername = "127.0.0.1";
-	$db_username = "Exitare";
-	$db_password = "raphaelk1";
-	$db_name = "wotlkauth";
 	
-	$conn = new mysqli($servername, $db_username, $db_password, $db_name);
+	
+	
+	$conn = new mysqli($GLOBALS["servername"], $GLOBALS['db_username'], $GLOBALS['db_password'], $GLOBALS['db_name']);
 	// Check connection
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
@@ -97,14 +104,10 @@ function betaKeyUsed($betakey){
 }
 
 function checkifAccountexist($username){
-	$servername = "127.0.0.1";
-	$db_username = "Exitare";
-	$db_password = "raphaelk1";
-	$db_name = "wotlkauth";
 	
-
 	
-	$conn = new mysqli($servername, $db_username, $db_password, $db_name);
+	
+	$conn = new mysqli($GLOBALS["servername"], $GLOBALS['db_username'], $GLOBALS['db_password'], $GLOBALS['db_name']);
 	// Check connection
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
@@ -131,12 +134,15 @@ function checkifAccountexist($username){
 }
 
 function checkbetakey($betakey){
-	$servername = "127.0.0.1";
-	$db_username = "Exitare";
-	$db_password = "raphaelk1";
-	$db_name = "wotlkauth";
 	
-	$conn = new mysqli($servername, $db_username, $db_password, $db_name);
+	
+	$server = $GLOBALS['servername'];
+	$dbuser = $GLOBALS['db_username'];
+	$dbpass = $GLOBALS['db_password'];
+	$dbschema = $GLOBALS['db_name'];
+	
+
+	$conn = new mysqli($server, $dbuser,$dbpass, $dbschema);
 	// Check connection
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
