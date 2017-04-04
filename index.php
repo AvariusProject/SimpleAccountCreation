@@ -2,9 +2,7 @@
 
 include_once("/accountcreation.php");
 
-?>
-
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html>
 <head>
 <title>Welcome to Purity Gaming!</title>
