@@ -22,13 +22,14 @@ else {
 
 function createAccount($username,$password,$betakey){
 	
-
+	$up_betakey = strtoupper($betakey);
 	$up_username = strtoupper($username);
 	$up_password = strtoupper($password);
-	$isBetaKeyused = checkbetakey($betakey);
+	$isBetaKeyused = checkbetakey($up_betakey);
 	
+	echo $up_betakey;
 	
-	if($betakey == ""){
+	if($up_betakey == ""){
 		echo "Without BetaKey no Accountcreation!";
 		return;
 	}
@@ -72,7 +73,7 @@ function createAccount($username,$password,$betakey){
 	$user_password = $final_pw;
 	$stmt->execute();
 
-	//betaKeyUsed($betakey);
+	betaKeyUsed($up_betakey);
 
 	$stmt->close();
 	$conn->close();
@@ -84,7 +85,7 @@ function betaKeyUsed($betakey){
 
 	
 	
-	
+	$up_betakey = strtoupper($betakey);
 	$conn = new mysqli($GLOBALS["servername"], $GLOBALS['db_username'], $GLOBALS['db_password'], $GLOBALS['db_name']);
 	// Check connection
 	if ($conn->connect_error) {
@@ -97,7 +98,7 @@ function betaKeyUsed($betakey){
 	$stmt->bind_param("s",$db_betakeynr);
 
 	// set parameters and execute
-	$db_betakeynr = $betakey;
+	$db_betakeynr = $up_betakey;
 	$stmt->execute();
 
 
@@ -135,7 +136,7 @@ function checkifAccountexist($username){
 }
 
 function checkbetakey($betakey){
-
+	$up_betakey = strtoupper($betakey);
 	
 	$server = $GLOBALS['servername'];
 	$dbuser = $GLOBALS['db_username'];
@@ -155,7 +156,8 @@ function checkbetakey($betakey){
 	if ($result->num_rows > 0) {
     // output data of each row
 		while($row = $result->fetch_assoc()) {		
-			if($row["betakeynr"] == $betakey){
+			if(strtoupper($row["betakeynr"]) == $up_betakey){
+				//echo strtoupper($row["betakeynr"]);
 				$conn->close();
 				return $row["active"];
 			}
