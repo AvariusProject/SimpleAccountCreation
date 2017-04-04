@@ -11,8 +11,8 @@ else {
 function createAccount($username,$password,$betakey){
 	
 	$servername = "127.0.0.1";
-	$db_username = "Exitare";
-	$db_password = "raphaelk1";
+	$db_username = "";
+	$db_password = "";
 	$db_name = "wotlkauth";
 	
 	$up_username = strtoupper($username);
@@ -72,8 +72,8 @@ function createAccount($username,$password,$betakey){
 
 function betaKeyUsed($betakey){
 	$servername = "127.0.0.1";
-	$db_username = "Exitare";
-	$db_password = "raphaelk1";
+	$db_username = "";
+	$db_password = "";
 	$db_name = "wotlkauth";
 	
 	$conn = new mysqli($servername, $db_username, $db_password, $db_name);
@@ -98,8 +98,8 @@ function betaKeyUsed($betakey){
 
 function checkifAccountexist($username){
 	$servername = "127.0.0.1";
-	$db_username = "Exitare";
-	$db_password = "raphaelk1";
+	$db_username = "";
+	$db_password = "";
 	$db_name = "wotlkauth";
 	
 
@@ -132,8 +132,8 @@ function checkifAccountexist($username){
 
 function checkbetakey($betakey){
 	$servername = "127.0.0.1";
-	$db_username = "Exitare";
-	$db_password = "raphaelk1";
+	$db_username = "";
+	$db_password = "";
 	$db_name = "wotlkauth";
 	
 	$conn = new mysqli($servername, $db_username, $db_password, $db_name);
