@@ -13,18 +13,17 @@ if ($conn->connect_error) {
 echo "Connected successfully";
 
 
-function createAccount(){
-	if (array_key_exists("username", $_POST) && array_key_exists("password", $_POST) && array_key_exists("betakey",$_POST)) 
-        return login($_POST["username"], base64_encode($_POST["password"]),);
+if (array_key_exists("username", $_POST) && array_key_exists("password", $_POST) && array_key_exists("betakey",$_POST)) {
+	createAccount($_POST["username"], base64_encode($_POST["password"]),);
+}
+        
+
+function createAccount($username,$password,$betakey){
+	
+	
 }
 
 
-
-function hashPW($username, $password) {
-	
-	
-   return false;
-}
 
 
 
