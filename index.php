@@ -1,6 +1,6 @@
 <?php
 
-include_once("/accountcreation.php");
+include_once("./accountcreation.php");
 
 ?><!DOCTYPE html>
 <html>
