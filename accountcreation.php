@@ -16,10 +16,6 @@ global $betakeyneeded;
 if (array_key_exists("username", $_POST) && array_key_exists("password", $_POST) && array_key_exists("betakey",$_POST)) {
 	createAccount($_POST["username"], ($_POST["password"]),$_POST["betakey"]);
 }
- 
-else {
-	echo "Missing something";
-}
 
 function createAccount($username,$password,$betakey){
 	
@@ -28,8 +24,7 @@ function createAccount($username,$password,$betakey){
 	$up_password = strtoupper($password);
 	$isBetaKeyused = checkbetakey($up_betakey);
 	
-	echo $GLOBALS['betakeyneeded'];
-	
+
 	if($GLOBALS['betakeyneeded'] == 1){
 		if($up_betakey == ""){
 			echo "Without BetaKey no Accountcreation!";
@@ -46,9 +41,6 @@ function createAccount($username,$password,$betakey){
 			return;
 		}
 	}
-	
-	
-	
 	
 	
 	$accountExist = checkifAccountexist($up_username);
@@ -89,8 +81,6 @@ function createAccount($username,$password,$betakey){
 }
 
 function betaKeyUsed($betakey){
-
-	
 	
 	$up_betakey = strtoupper($betakey);
 	$conn = new mysqli($GLOBALS["servername"], $GLOBALS['db_username'], $GLOBALS['db_password'], $GLOBALS['db_name']);
@@ -114,7 +104,6 @@ function betaKeyUsed($betakey){
 }
 
 function checkifAccountexist($username){
-
 	
 	$conn = new mysqli($GLOBALS["servername"], $GLOBALS['db_username'], $GLOBALS['db_password'], $GLOBALS['db_name']);
 	// Check connection

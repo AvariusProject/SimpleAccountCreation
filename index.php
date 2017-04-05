@@ -19,7 +19,7 @@ include_once("./accountcreation.php");
 
 <h1>Welcome at the Homepage of  Purity Gaming!</h1>
 <p>Our Homepage is under Construction.</p>
- <form action="../index.php" method="post">
+ <form action="./index.php" method="post">
   Accountname:<br>
   <input type="text" name="username" ><br>
   Accountpassword:<br>
