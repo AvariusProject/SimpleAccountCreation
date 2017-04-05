@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS `betakey` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `betakeynr` VARCHAR(45) NULL,
+  `active` VARCHAR(45) NULL DEFAULT 0,
+  PRIMARY KEY (`id`));
