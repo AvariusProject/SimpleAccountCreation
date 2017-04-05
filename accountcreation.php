@@ -5,12 +5,13 @@ $servername = $serverconfigs['servername'];
 $db_username = $serverconfigs['username'];
 $db_password = $serverconfigs['password'];
 $db_name = $serverconfigs['databasename'];
+$betakeyneeded = $serverconfigs['isbetakeyneeded'];
 
 global $servername;
 global $db_username;
 global $db_password;
 global $db_name;
-
+global $betakeyneeded;
 
 if (array_key_exists("username", $_POST) && array_key_exists("password", $_POST) && array_key_exists("betakey",$_POST)) {
 	createAccount($_POST["username"], ($_POST["password"]),$_POST["betakey"]);
@@ -27,26 +28,32 @@ function createAccount($username,$password,$betakey){
 	$up_password = strtoupper($password);
 	$isBetaKeyused = checkbetakey($up_betakey);
 	
+	echo $GLOBALS['betakeyneeded'];
 	
-	
-	if($up_betakey == ""){
-		echo "Without BetaKey no Accountcreation!";
+	if($GLOBALS['betakeyneeded'] == 1){
+		if($up_betakey == ""){
+			echo "Without BetaKey no Accountcreation!";
 		return;
+		}
+	
+		if($isBetaKeyused == "1"){
+			echo "BetaKey is used";
+			return;
+		}
+	
+		if($isBetaKeyused == "-1"){
+			echo "BetaKey not found!";
+			return;
+		}
 	}
 	
-	if($isBetaKeyused == "1"){
-		echo "BetaKey is used";
-		return;
-	}
 	
-	if($isBetaKeyused == "-1"){
-		echo "BetaKey not found!";
-		return;
-	}
+	
+	
 	
 	$accountExist = checkifAccountexist($up_username);
 	if($accountExist == "1"){
-		echo "Account exists";
+		echo "Account already exists";
 		return;
 	}
 	
